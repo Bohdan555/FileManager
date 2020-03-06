@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FileManager.Components\FileManager.Components.csproj" />
-    <ProjectReference Include="..\FileManager.DAL\FileManager.DAL.csproj" />
+    <ProjectReference Include="..\FileManager.Components\TransactionManager.Components.csproj" />
+    <ProjectReference Include="..\FileManager.DAL\TransactionManager.DAL.csproj" />
   </ItemGroup>
 
 

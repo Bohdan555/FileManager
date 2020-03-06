@@ -9,7 +9,7 @@ using NLog;
 using NLog.Web;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
-namespace WebApplication2
+namespace TransactionManager.Api
 {
     public class Program
     {
@@ -17,7 +17,7 @@ namespace WebApplication2
         {
             var config = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).Build();           
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).Build();
 
             var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
 
@@ -45,7 +45,7 @@ namespace WebApplication2
                 {
                     config
                         .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
-                        .AddJsonFile("appsettings.json", true, true)                        
+                        .AddJsonFile("appsettings.json", true, true)
                         .AddEnvironmentVariables();
                 })
                 .UseStartup<Startup>()
