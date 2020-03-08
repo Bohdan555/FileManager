@@ -52,7 +52,7 @@ namespace TransactionManager.Api
                 .ConfigureLogging(logging =>
                 {
                     logging.ClearProviders();
-                    logging.SetMinimumLevel(LogLevel.Error);
+                    logging.SetMinimumLevel(LogLevel.Information);
                 })
                 .UseNLog();
         }
