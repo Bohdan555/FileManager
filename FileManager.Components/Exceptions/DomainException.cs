@@ -1,12 +1,13 @@
 ﻿using TransactionManager.Components.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TransactionManager.Components.Exceptions
 {
     public class DomainException: Exception
     {
-        public List<string> Errors { get; set; }
+        public List<string> Errors { get; set; } = new List<string>();
 
         public DomainException(string message, List<string> errors) : base(message)           
         {
@@ -23,7 +24,7 @@ namespace TransactionManager.Components.Exceptions
 
         public override string ToString()
         {         
-            return $"{Message}: {string.Join(",", Errors)}";        
+            return Errors.Any() ? $"{Message}: {string.Join(",", Errors)}" : $"{Message}";        
         }
     }
 }
