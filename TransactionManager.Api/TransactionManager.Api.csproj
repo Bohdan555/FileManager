@@ -22,12 +22,12 @@
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FileManager.Components\TransactionManager.Components.csproj" />
-    <ProjectReference Include="..\FileManager.DAL\TransactionManager.DAL.csproj" />
+    <ProjectReference Include="..\TransactionManager.Components\TransactionManager.Components.csproj" />
+    <ProjectReference Include="..\TransactionManager.DAL\TransactionManager.DAL.csproj" />
   </ItemGroup>
 
 

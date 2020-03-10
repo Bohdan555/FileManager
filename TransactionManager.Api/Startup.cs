@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
 using System;
 using TransactionManager.Components.Infrastructure;
 using System.Text.Json.Serialization;
+using Microsoft.OpenApi.Models;
 
 namespace TransactionManager.Api
 {
@@ -68,7 +68,7 @@ namespace TransactionManager.Api
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "File Service");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Transaction Service");
                 c.RoutePrefix = string.Empty;
             });
 

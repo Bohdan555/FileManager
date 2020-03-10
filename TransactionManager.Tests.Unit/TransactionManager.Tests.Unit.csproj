@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FileManager.Components\TransactionManager.Components.csproj" />
-    <ProjectReference Include="..\FileManager.DAL\TransactionManager.DAL.csproj" />
+    <ProjectReference Include="..\TransactionManager.Components\TransactionManager.Components.csproj" />
+    <ProjectReference Include="..\TransactionManager.DAL\TransactionManager.DAL.csproj" />
   </ItemGroup>
 
 </Project>
