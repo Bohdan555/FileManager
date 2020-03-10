@@ -25,7 +25,7 @@ namespace TransactionManager.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveFile([FromForm] UploadFileRequest request)
         {
-            await _transactionManagerService.ImportTransaction(request);
+            await _transactionManagerService.ImportTransactions(request);
             return Ok();
         }
 

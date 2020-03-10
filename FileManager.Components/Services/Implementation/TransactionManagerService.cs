@@ -23,10 +23,10 @@ namespace TransactionManager.Components.Services.Implementation
     public class TransactionManagerService : ITransactionManagerService
     {
         private readonly IMapper _mapper;
-        private readonly IValidator<List<Models.Transaction>> _validator;
+        private readonly IValidator<List<Transaction>> _validator;
         private readonly IRepository<DAL.Entities.Transaction> _transactionRepository;
 
-        public TransactionManagerService(IMapper mapper, IValidator<List<Models.Transaction>> validator, IRepository<DAL.Entities.Transaction> transactionRepository)
+        public TransactionManagerService(IMapper mapper, IValidator<List<Transaction>> validator, IRepository<DAL.Entities.Transaction> transactionRepository)
         {
             _mapper = mapper;
             _validator = validator;
@@ -90,10 +90,10 @@ namespace TransactionManager.Components.Services.Implementation
             {
                 case FileType.Xml:
                     var deserializedXmlFile = await DeserializeXml(file.OpenReadStream());
-                    return _mapper.Map<List<Models.Transaction>>(deserializedXmlFile.Transactions);
+                    return _mapper.Map<List<Transaction>>(deserializedXmlFile.Transactions);
                 case FileType.Csv:
                     var deserializedCsvFile = await DeserializeCsv(file.OpenReadStream());
-                    return _mapper.Map<List<Models.Transaction>>(deserializedCsvFile);
+                    return _mapper.Map<List<Transaction>>(deserializedCsvFile);
                 default:
                     throw new Exception("FileType is not supported");
             }
@@ -117,6 +117,8 @@ namespace TransactionManager.Components.Services.Implementation
             {
                 using (var csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture))
                 {
+                    csvReader.Configuration.MissingFieldFound = default;
+                    csvReader.Configuration.HeaderValidated = default;
                     var records = csvReader.GetRecords<CsvTransaction>().ToList();                    
                     return await Task.FromResult(records);
                 }
@@ -157,7 +159,7 @@ namespace TransactionManager.Components.Services.Implementation
         private static void GuardArgumentIsNotNull<T>(T argument, string name)
         {
             if (argument == null)
-                throw new ArgumentException($"Argument {name} is null");
+                throw new DomainException($"Argument {name} is null");
         }
 
         private static DateTime TryParseDate(string date)
@@ -173,6 +175,6 @@ namespace TransactionManager.Components.Services.Implementation
         private const int MaxFileSize = 1000000;
 
         private static readonly string[] ValidTypeExtensions = new string[] { ".csv", ".xml" };
-        private static readonly string[] ValidDateFormats = new string[] { "dd/MM/yyyy", "dd/MM/yyyy HH:mm:ss" };
+        private static readonly string[] ValidDateFormats = new string[] { "yyyy-MM-ddTHH:mm:ss", "dd/MM/yyyy HH:mm:ss" };
     }
 }
