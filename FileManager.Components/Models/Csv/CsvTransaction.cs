@@ -3,19 +3,20 @@ using System;
 
 namespace TransactionManager.Components.Models.Csv
 {
+    [Serializable]
     public class CsvTransaction
     {
-        [Name("Id")]
-        public string Id { get; set; }
+        [Name("Id")]        
+        public string TransactionId { get; set; }
 
-        [Name("Amount")]
-        public decimal? Amount { get; set; }
+        [Name("Amount")]       
+        public string Amount { get; set; }
 
         [Name("Currency Code")]
         public string CurrencyCode { get; set; }
 
         [Name("Transaction Date")]
-        public DateTime? TransactionDate { get; set; }
+        public string TransactionDate { get; set; }
 
         [Name("Status")]
         public string Status { get; set; }

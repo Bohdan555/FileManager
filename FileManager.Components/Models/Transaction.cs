@@ -6,10 +6,10 @@ namespace TransactionManager.Components.Models
     {        
         public string TransactionId { get; set; }
 
-        public decimal? Amount { get; set; }
+        public string Amount { get; set; }
         public string CurrencyCode { get; set; }
 
-        public DateTime? TransactionDate { get; set; }
+        public string TransactionDate { get; set; }
       
         public string Status { get; set; }
     }
