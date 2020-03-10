@@ -19,7 +19,7 @@ namespace TransactionManager.Components.Models
         {
             if (Errors.Count > 0)
             {
-                throw new DomainException("Model is invalid", Errors);
+                throw new DomainException("Model is invalid", Errors.Select(e => e.Message).ToList());
             }
         }
     }
